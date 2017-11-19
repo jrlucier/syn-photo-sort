@@ -1,3 +1,4 @@
+## Intro
 This script will bucket photos from a given source directory into a dated tree structure in a destination directory.
 
 This script was written to run on a Synology NAS with DiskStation on board (python 2.7, and exiv2 installed).  
@@ -15,6 +16,8 @@ Dest/
         20150202-193501.jpg
 ```
 
+
+## Usage
 These are the program arguments:
 ```
 usage: syn_photo_sort.py [-h] [-m] source destination type
@@ -36,10 +39,15 @@ The source directory is scanned recursively, for whatever kind of file you speci
 photo: `'.JPG', '.PNG', '.THM', '.CR2', '.NEF', '.DNG', '.RAW', '.NEF', '.JPEG'`
 video: `'.3PG', '.MOV', '.MPG', '.MPEG', '.AVI', '.3GPP', '.MP4'`
 
-If you specify the -m or --move flag, it will move the file and delete it fromt he source directory.  It will also
-clean up any existing empty folders that might exist.  It will however leave the root source directory.
+If you specify the `-m` or `--move` flag, it will move the source file to its intended destination and delete it from 
+the source directory.  It will also clean up any existing empty folders that might exist.  It will however leave the 
+root source directory.
 
-An example usage, if I wanted to move and rebucket all photos:
+
+## Setup For Synology NAS
+SCP the file up, and place it at `/usr/local/bin/syn_photo_sort`.  You should now be able to call it at any time using 
+`syn_photo_sort`.  Once there, setup your cron job by using DSM and visiting the "Task Scheduler".  Create a new user
+`user defined script` and place all the command line calls you want to run.  Such as:
 ```bash
 syn_photo_sort.py -m /data/source /data/destination photo
 ```
