@@ -4,7 +4,7 @@ This script will bucket photos from a given source directory into a dated tree s
 This script was written to run on a Synology NAS with DiskStation on board (python 2.7, and exiv2 installed).  
 The idea being I wanted all backed up photos (using either DS Photo or DS File) to get automatically moved, sorted, 
 and structured by date using their EXIF date and time.  If no EXIF date and time are found, it falls back to using 
-the file systems "last modified" date and time.
+the file systems "last modified" date and time.  It also handles duplicates by checking for MD5 collisions if matching timestamps are found.  If there aren't duplicates and just so happen to be unique photos taken at that exact same date and time, it will add a counter on to the end of the filename (look at the example below with the `-0001`) to prevent conflicts.
 
 The destination structure looks like he following:
 ```
@@ -13,6 +13,7 @@ Dest/
     02/
       02FEB2015/
         20150202-183511.jpg
+        20150202-183511-0001.jpg
         20150202-193501.jpg
 ```
 
