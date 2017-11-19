@@ -36,8 +36,8 @@ optional arguments:
 The source directory is scanned recursively, for whatever kind of file you specified via the type flag of "photo" or 
 "video".  The types and extensions are as follows:
 
-photo: `'.JPG', '.PNG', '.THM', '.CR2', '.NEF', '.DNG', '.RAW', '.NEF', '.JPEG'`
-video: `'.3PG', '.MOV', '.MPG', '.MPEG', '.AVI', '.3GPP', '.MP4'`
+ * photo: `'.JPG', '.PNG', '.THM', '.CR2', '.NEF', '.DNG', '.RAW', '.NEF', '.JPEG'`
+ * video: `'.3PG', '.MOV', '.MPG', '.MPEG', '.AVI', '.3GPP', '.MP4'`
 
 If you specify the `-m` or `--move` flag, it will move the source file to its intended destination and delete it from 
 the source directory.  It will also clean up any existing empty folders that might exist.  It will however leave the 
@@ -45,9 +45,9 @@ root source directory.
 
 
 ## Setup For Synology NAS
-SCP the file up, and place it at `/usr/local/bin/syn_photo_sort`.  You should now be able to call it at any time using 
+SCP the file up, and place it at `/usr/local/bin/syn_photo_sort` (no need for the `.py` extension).  You should now be able to call it at any time using 
 `syn_photo_sort`.  Once there, setup your cron job by using DSM and visiting the "Task Scheduler".  Create a new user
 `user defined script` and place all the command line calls you want to run.  Such as:
 ```bash
-syn_photo_sort.py -m /data/source /data/destination photo
+syn_photo_sort -m /data/source /data/destination photo
 ```
